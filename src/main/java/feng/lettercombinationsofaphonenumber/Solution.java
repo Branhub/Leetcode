@@ -23,30 +23,30 @@ public class Solution {
 
     public List<String> letterCombinations(String digits)
     {
-        Set<String> resultSet = new HashSet<>();
-        char[] oneResult = new char[digits.length()];
-        int[] indexes = new int[digits.length()];
-        int[] targetIndexes = new int[digits.length()];
-        for (int i = 0; i < digits.length(); i++)
+        Set<String> result = new HashSet<>();
+        for (int i = 0;i < digits.length(); i++)
         {
-            indexes[i] = 0;
-            targetIndexes[i] = DIGIT_2_CHAR.get(digits.charAt(i)).size() - 1;
-        }
-        while ()
-        {
-
-        }
-    }
-
-    public boolean allFound(int[] indexes,int[] targetIndexes)
-    {
-        for (int i = 0; i < indexes.length; i++)
-        {
-            if (indexes[i] != targetIndexes[i])
+            List<Character> currentDigit = DIGIT_2_CHAR.get(digits.charAt(i));
+            if (i == 0)
             {
-                return false;
+                for (Character c : currentDigit)
+                {
+                    result.add(String.valueOf(c));
+                }
+            }
+            else
+            {
+                Set<String> previous = new HashSet<>(result);
+                result.clear();
+                for (String previousOneResult : previous)
+                {
+                    for (Character c : currentDigit)
+                    {
+                        result.add(previousOneResult + c);
+                    }
+                }
             }
         }
-        return true;
+        return new ArrayList<>(result);
     }
 }
