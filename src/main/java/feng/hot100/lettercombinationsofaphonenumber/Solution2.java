@@ -1,5 +1,5 @@
 
-package feng.lettercombinationsofaphonenumber;
+package feng.hot100.lettercombinationsofaphonenumber;
 
 
 import java.util.*;
